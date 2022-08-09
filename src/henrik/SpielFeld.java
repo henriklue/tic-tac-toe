@@ -9,8 +9,14 @@ public class SpielFeld {
         for (int x = 0; x < koordinaten.length; x++) {
             System.out.println();
 
-            for (int y = 0; y < koordinaten.length; y++)
-            System.out.print(koordinaten[x][y]);
+            for (int y = 0; y < koordinaten.length; y++) {
+                Spielstein spielsteinAnPositionxy = koordinaten[x][y];
+                if (spielsteinAnPositionxy == null)
+                    System.out.print(".");
+                else
+                    System.out.print(koordinaten[x][y]);
+
+            }
         }
 
 
