@@ -8,7 +8,7 @@ public class Tictactoe {
         Spieler spieler2 = new Spieler();
 
         SpielFeld feld = new SpielFeld();
-
+        feld.ausgabeKoordinaten();
         Spielstein x = new Spielstein();
         Spielstein o = new Spielstein();
 
