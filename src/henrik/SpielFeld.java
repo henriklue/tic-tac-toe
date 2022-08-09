@@ -2,7 +2,7 @@ package henrik;
 
 public class SpielFeld {
 
-    int koordinaten[][] = new int[3][3];
+    Spielstein koordinaten[][] = new Spielstein[3][3];
 
     public void ausgabeKoordinaten() {
 
@@ -14,5 +14,10 @@ public class SpielFeld {
         }
 
 
+    }
+
+    public void setzeSpielstein(Spielstein spielstein, int x, int y) {
+
+        koordinaten[x][y] = spielstein;
     }
 }
