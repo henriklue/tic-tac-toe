@@ -4,7 +4,7 @@ public class Spielstein {
 
     String stein;
 
-    public Spielstein(String stein){
+    public Spielstein(String stein) {
         this.stein = stein;
     }
 
