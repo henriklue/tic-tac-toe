@@ -40,8 +40,8 @@ public class Tictactoe {
 
             System.out.println();
             System.out.println("(" + userInputX + "/" + userInputY + ")");
-
-            feld.setzeSpielstein(spieler1.getSpielstein(), userInputX, userInputY);
+            Spielstein spielstein = aktuellesSpiel.aktiverSpieler.getSpielstein();
+            feld.setzeSpielstein(spielstein, userInputX, userInputY);
             feld.ausgabeKoordinaten();
 
             System.out.println();
