@@ -12,4 +12,8 @@ public class Spielstein {
     public String toString() {
         return stein;
     }
+
+    public String getStein() {
+        return stein;
+    }
 }

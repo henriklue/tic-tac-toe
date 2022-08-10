@@ -5,11 +5,13 @@ import java.util.Scanner;
 public class Tictactoe {
 
     private Spieler aktiverSpieler;
+    static final String spielStein1 = "x";
+    static final String spielStein2 = "o";
 
     public static void main(String[] args) {
 
-        Spielstein x = new Spielstein("x");
-        Spielstein o = new Spielstein("o");
+        Spielstein x = new Spielstein(spielStein1);
+        Spielstein o = new Spielstein(spielStein2);
 
         Scanner input = new Scanner(System.in);
 
@@ -25,7 +27,7 @@ public class Tictactoe {
 
         Tictactoe aktuellesSpiel = new Tictactoe();
 
-        while (!aktuellesSpiel.feldVollCheck(feld) && !aktuellesSpiel.hatSpielerGewonnenCheck()) {
+        while (!aktuellesSpiel.feldVollCheck(feld) && !aktuellesSpiel.hatSpielerGewonnenCheck(feld)) {
 
             aktuellesSpiel.wechsleAktivenSpieler(spieler1, spieler2);
 
@@ -88,11 +90,30 @@ public class Tictactoe {
         return true;
     }
 
-    public boolean hatSpielerGewonnenCheck() {
+    public boolean hatSpielerGewonnenCheck(SpielFeld feld) {
 
+        Spielstein[][] koordinaten = feld.getKoordinaten();
+
+        for (int x = 0; x < koordinaten.length; x++) {
+
+            for (int y = 0; y < koordinaten.length; y++) {
+                Spielstein spielsteinAnPositionxy = koordinaten[x][y];
+
+                if (spielsteinAnPositionxy == null) {
+                    continue;
+                } else {
+                    String spielStein = spielsteinAnPositionxy.getStein();
+                    if (spielStein.equals(spielStein1)) {
+
+                    }
+                }
+
+
+                return false;
+            }
+
+        }
         return false;
     }
 
 }
-
-
