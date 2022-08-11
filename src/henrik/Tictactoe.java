@@ -22,12 +22,11 @@ public class Tictactoe {
 
         System.out.println();
 
-
         SpielFeld feld = new SpielFeld();
 
         Tictactoe aktuellesSpiel = new Tictactoe();
 
-        while (!aktuellesSpiel.feldVollCheck(feld) && !aktuellesSpiel.hatSpielerGewonnenCheck(feld)) {
+        while (!aktuellesSpiel.feldVollCheck(feld) && !aktuellesSpiel.gibtEsDreiGleiche(feld)) {
 
             aktuellesSpiel.wechsleAktivenSpieler(spieler1, spieler2);
 
@@ -49,6 +48,22 @@ public class Tictactoe {
             System.out.println();
 
         }
+
+
+    }
+
+    private boolean gibtEsDreiGleiche(SpielFeld feld) {
+
+        return
+
+                sindAlleSteineGleich(feld, 0, 0, 0, 1, 0, 2) ||
+                        sindAlleSteineGleich(feld, 1, 0, 1, 1, 1, 2) ||
+                        sindAlleSteineGleich(feld, 2, 0, 2, 1, 2, 2) ||
+                        sindAlleSteineGleich(feld, 0, 0, 1, 0, 2, 0) ||
+                        sindAlleSteineGleich(feld, 0, 1, 1, 1, 2, 1) ||
+                        sindAlleSteineGleich(feld, 0, 2, 1, 2, 2, 2) ||
+                        sindAlleSteineGleich(feld, 0, 0, 1, 1, 2, 2) ||
+                        sindAlleSteineGleich(feld, 0, 2, 1, 1, 2, 0);
 
 
     }
@@ -86,6 +101,8 @@ public class Tictactoe {
             }
 
         }
+        System.out.println();
+        System.out.println("Das Spiel endet mit einem Unentschieden");
 
         return true;
     }
@@ -104,16 +121,37 @@ public class Tictactoe {
                 } else {
                     String spielStein = spielsteinAnPositionxy.getStein();
                     if (spielStein.equals(spielStein1)) {
-
                     }
                 }
-
-
                 return false;
             }
-
         }
         return false;
     }
+
+    public boolean sindAlleSteineGleich(SpielFeld feld, int x1, int y1, int x2, int y2, int x3, int y3) {
+
+        Spielstein[][] koordinaten = feld.getKoordinaten();
+
+        Spielstein spielstein1 = koordinaten[x1][y1];
+        Spielstein spielstein2 = koordinaten[x2][y2];
+        Spielstein spielstein3 = koordinaten[x3][y3];
+
+        if (spielstein1 == null) {
+            return false;
+        }
+        if (spielstein2 == null) {
+            return false;
+        }
+        if (spielstein3 == null) {
+            return false;
+        }
+
+        return spielstein1.getStein().equals(spielstein2.getStein()) &&
+                spielstein2.getStein().equals(spielstein3.getStein());
+
+
+    }
+
 
 }
