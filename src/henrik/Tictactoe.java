@@ -65,6 +65,7 @@ public class Tictactoe {
         }
 
         System.out.println(aktuellesSpiel.aktiverSpieler + " hat das Spiel gewonnen.");
+        System.out.println("Herzlichen Glüsckwunsch");
 
     }
 
