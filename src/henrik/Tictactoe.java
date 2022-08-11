@@ -31,28 +31,44 @@ public class Tictactoe {
             aktuellesSpiel.wechsleAktivenSpieler(spieler1, spieler2);
 
             System.out.println();
-            System.out.println(aktuellesSpiel.aktiverSpieler + " " + "Gib deine Koordinaten für den Spielzug an, von 0 - 2.");
+            System.out.println(aktuellesSpiel.aktiverSpieler + " Gib deine Koordinaten für den Spielzug an, von 0 - 2.");
 
-            System.out.println("x Koordinate?");
+            System.out.println("x-Koordinate?");
             int userInputX = input.nextInt();
 
-            System.out.println("y Koordinate");
+            System.out.println("y-Koordinate");
             int userInputY = input.nextInt();
+
+            while (aktuellesSpiel.liegtHierSchonEinStein(feld, userInputX, userInputY)) {
+
+                Spielstein spielstein = aktuellesSpiel.aktiverSpieler.getSpielstein();
+
+                System.out.println("Hier liegt bereits ein Stein, wähle eine andere Position");
+
+                System.out.println("x-Koordinate?");
+                userInputX = input.nextInt();
+
+                System.out.println("y-Koordinate");
+                userInputY = input.nextInt();
+
+            }
 
             System.out.println("(" + userInputX + "/" + userInputY + ")");
             Spielstein spielstein = aktuellesSpiel.aktiverSpieler.getSpielstein();
-            System.out.println(aktuellesSpiel.aktiverSpieler + " " + "ist am Zug");
+            System.out.println(aktuellesSpiel.aktiverSpieler + " ist am Zug.");
             feld.setzeSpielstein(spielstein, userInputX, userInputY);
             feld.ausgabeKoordinaten();
 
             System.out.println();
 
+
         }
 
+        System.out.println(aktuellesSpiel.aktiverSpieler + " hat das Spiel gewonnen.");
 
     }
 
-    private boolean gibtEsDreiGleiche(SpielFeld feld) {
+    public boolean gibtEsDreiGleiche(SpielFeld feld) {
 
         return
 
@@ -89,10 +105,10 @@ public class Tictactoe {
 
         Spielstein[][] koordinaten = feld.getKoordinaten();
 
-        for (int x = 0; x < koordinaten.length; x++) {
+        for (Spielstein[] spielstein : koordinaten) {
 
             for (int y = 0; y < koordinaten.length; y++) {
-                Spielstein spielsteinAnPositionxy = koordinaten[x][y];
+                Spielstein spielsteinAnPositionxy = spielstein[y];
 
                 if (spielsteinAnPositionxy == null) {
 
@@ -105,28 +121,6 @@ public class Tictactoe {
         System.out.println("Das Spiel endet mit einem Unentschieden");
 
         return true;
-    }
-
-    public boolean hatSpielerGewonnenCheck(SpielFeld feld) {
-
-        Spielstein[][] koordinaten = feld.getKoordinaten();
-
-        for (int x = 0; x < koordinaten.length; x++) {
-
-            for (int y = 0; y < koordinaten.length; y++) {
-                Spielstein spielsteinAnPositionxy = koordinaten[x][y];
-
-                if (spielsteinAnPositionxy == null) {
-                    continue;
-                } else {
-                    String spielStein = spielsteinAnPositionxy.getStein();
-                    if (spielStein.equals(spielStein1)) {
-                    }
-                }
-                return false;
-            }
-        }
-        return false;
     }
 
     public boolean sindAlleSteineGleich(SpielFeld feld, int x1, int y1, int x2, int y2, int x3, int y3) {
@@ -147,10 +141,23 @@ public class Tictactoe {
             return false;
         }
 
-        return spielstein1.getStein().equals(spielstein2.getStein()) &&
-                spielstein2.getStein().equals(spielstein3.getStein());
+        return spielstein1.getStein().equals(spielstein2.getStein()) && spielstein2.getStein().equals(spielstein3.getStein());
 
 
+    }
+
+    public boolean liegtHierSchonEinStein(SpielFeld feld, int x1, int y1) {
+
+        Spielstein[][] koordinaten = feld.getKoordinaten();
+
+        Spielstein spielstein1 = koordinaten[x1][y1];
+
+        if (spielstein1 == null) {
+            return false;
+        }
+
+
+        return true;
     }
 
 
