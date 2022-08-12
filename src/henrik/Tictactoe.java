@@ -26,7 +26,7 @@ public class Tictactoe {
 
         Tictactoe aktuellesSpiel = new Tictactoe();
 
-        while (!aktuellesSpiel.gibtEsDreiGleiche(feld) && !aktuellesSpiel.feldVollCheck(feld)) {
+        while (!aktuellesSpiel.gibtEsDreiGleiche(feld) && !aktuellesSpiel.istDasFeldVoll(feld)) {
 
             aktuellesSpiel.wechsleAktivenSpieler(spieler1, spieler2);
 
@@ -77,14 +77,14 @@ public class Tictactoe {
 
         return
 
-                sindAlleSteineGleich(feld, 0, 0, 0, 1, 0, 2) ||
-                        sindAlleSteineGleich(feld, 1, 0, 1, 1, 1, 2) ||
-                        sindAlleSteineGleich(feld, 2, 0, 2, 1, 2, 2) ||
-                        sindAlleSteineGleich(feld, 0, 0, 1, 0, 2, 0) ||
-                        sindAlleSteineGleich(feld, 0, 1, 1, 1, 2, 1) ||
-                        sindAlleSteineGleich(feld, 0, 2, 1, 2, 2, 2) ||
-                        sindAlleSteineGleich(feld, 0, 0, 1, 1, 2, 2) ||
-                        sindAlleSteineGleich(feld, 0, 2, 1, 1, 2, 0);
+                sindDreiSteineGleich(feld, 0, 0, 0, 1, 0, 2) ||
+                        sindDreiSteineGleich(feld, 1, 0, 1, 1, 1, 2) ||
+                        sindDreiSteineGleich(feld, 2, 0, 2, 1, 2, 2) ||
+                        sindDreiSteineGleich(feld, 0, 0, 1, 0, 2, 0) ||
+                        sindDreiSteineGleich(feld, 0, 1, 1, 1, 2, 1) ||
+                        sindDreiSteineGleich(feld, 0, 2, 1, 2, 2, 2) ||
+                        sindDreiSteineGleich(feld, 0, 0, 1, 1, 2, 2) ||
+                        sindDreiSteineGleich(feld, 0, 2, 1, 1, 2, 0);
 
 
     }
@@ -106,7 +106,7 @@ public class Tictactoe {
         }
     }
 
-    public boolean feldVollCheck(SpielFeld feld) {
+    public boolean istDasFeldVoll(SpielFeld feld) {
 
         Spielstein[][] koordinaten = feld.getKoordinaten();
 
@@ -128,7 +128,7 @@ public class Tictactoe {
         return true;
     }
 
-    public boolean sindAlleSteineGleich(SpielFeld feld, int x1, int y1, int x2, int y2, int x3, int y3) {
+    public boolean sindDreiSteineGleich(SpielFeld feld, int x1, int y1, int x2, int y2, int x3, int y3) {
 
         Spielstein[][] koordinaten = feld.getKoordinaten();
 
@@ -160,6 +160,5 @@ public class Tictactoe {
 
         return spielstein1 != null;
     }
-
 
 }
