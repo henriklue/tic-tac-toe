@@ -31,7 +31,7 @@ public class Tictactoe {
             aktuellesSpiel.wechsleAktivenSpieler(spieler1, spieler2);
 
             System.out.println();
-            System.out.println(aktuellesSpiel.aktiverSpieler + " Gib deine Koordinaten für den Spielzug an, von 0 - 2.");
+            System.out.println(aktuellesSpiel.aktiverSpieler + " gib deine Koordinaten für den Spielzug an, von 0 - 2.");
 
             System.out.println("x-Koordinate?");
             int userInputX = input.nextInt();
@@ -53,7 +53,6 @@ public class Tictactoe {
 
             System.out.println("(" + userInputX + "/" + userInputY + ")");
             Spielstein spielstein = aktuellesSpiel.aktiverSpieler.getSpielstein();
-            System.out.println(aktuellesSpiel.aktiverSpieler + " ist am Zug.");
             feld.setzeSpielstein(spielstein, userInputX, userInputY);
             feld.ausgabeKoordinaten();
 
@@ -62,6 +61,7 @@ public class Tictactoe {
 
         }
 
+        System.out.println();
         System.out.println(aktuellesSpiel.aktiverSpieler + " hat das Spiel gewonnen.");
         System.out.println("Herzlichen Glüsckwunsch");
 
@@ -79,7 +79,6 @@ public class Tictactoe {
                         sindAlleSteineGleich(feld, 0, 2, 1, 2, 2, 2) ||
                         sindAlleSteineGleich(feld, 0, 0, 1, 1, 2, 2) ||
                         sindAlleSteineGleich(feld, 0, 2, 1, 1, 2, 0);
-
 
     }
 
@@ -116,6 +115,7 @@ public class Tictactoe {
             }
 
         }
+
         System.out.println();
         System.out.println("Das Spiel endet mit einem Unentschieden");
 
@@ -140,7 +140,8 @@ public class Tictactoe {
             return false;
         }
 
-        return spielstein1.getStein().equals(spielstein2.getStein()) && spielstein2.getStein().equals(spielstein3.getStein());
+        return spielstein1.getStein().equals(spielstein2.getStein()) &&
+                spielstein2.getStein().equals(spielstein3.getStein());
 
 
     }
