@@ -62,8 +62,14 @@ public class Tictactoe {
         }
 
         System.out.println();
-        System.out.println(aktuellesSpiel.aktiverSpieler + " hat das Spiel gewonnen.");
-        System.out.println("Herzlichen Glüsckwunsch");
+
+        if (aktuellesSpiel.gibtEsDreiGleiche(feld)) {
+
+            System.out.println(aktuellesSpiel.aktiverSpieler + " hat das Spiel gewonnen!");
+        }else {
+            System.out.println("Das Spiel endet mit einem Unentschieden");
+        }
+
 
     }
 
@@ -79,6 +85,7 @@ public class Tictactoe {
                         sindAlleSteineGleich(feld, 0, 2, 1, 2, 2, 2) ||
                         sindAlleSteineGleich(feld, 0, 0, 1, 1, 2, 2) ||
                         sindAlleSteineGleich(feld, 0, 2, 1, 1, 2, 0);
+
 
     }
 
@@ -117,7 +124,6 @@ public class Tictactoe {
         }
 
         System.out.println();
-        System.out.println("Das Spiel endet mit einem Unentschieden");
 
         return true;
     }
