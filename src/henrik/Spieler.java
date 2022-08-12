@@ -2,8 +2,8 @@ package henrik;
 
 public class Spieler {
 
-    private Spielstein spielstein;
-    private String nameSpieler;
+    private final Spielstein spielstein;
+    private final String nameSpieler;
 
     public Spieler(Spielstein spielstein, String nameSpieler) {
         this.spielstein = spielstein;

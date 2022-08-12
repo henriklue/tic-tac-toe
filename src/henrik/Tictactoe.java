@@ -26,7 +26,7 @@ public class Tictactoe {
 
         Tictactoe aktuellesSpiel = new Tictactoe();
 
-        while (!aktuellesSpiel.feldVollCheck(feld) && !aktuellesSpiel.gibtEsDreiGleiche(feld)) {
+        while (!aktuellesSpiel.gibtEsDreiGleiche(feld) && !aktuellesSpiel.feldVollCheck(feld)) {
 
             aktuellesSpiel.wechsleAktivenSpieler(spieler1, spieler2);
 

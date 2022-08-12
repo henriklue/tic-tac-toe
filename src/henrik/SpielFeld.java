@@ -2,19 +2,19 @@ package henrik;
 
 public class SpielFeld {
 
-    private Spielstein koordinaten[][] = new Spielstein[3][3];
+    private final Spielstein[][] koordinaten = new Spielstein[3][3];
 
     public void ausgabeKoordinaten() {
 
-        for (int x = 0; x < koordinaten.length; x++) {
+        for (Spielstein[] spielsteins : koordinaten) {
             System.out.println();
 
             for (int y = 0; y < koordinaten.length; y++) {
-                Spielstein spielsteinAnPositionxy = koordinaten[x][y];
+                Spielstein spielsteinAnPositionxy = spielsteins[y];
                 if (spielsteinAnPositionxy == null)
                     System.out.print(".");
                 else
-                    System.out.print(koordinaten[x][y]);
+                    System.out.print(spielsteins[y]);
 
             }
         }
