@@ -41,8 +41,6 @@ public class Tictactoe {
 
             while (aktuellesSpiel.liegtHierSchonEinStein(feld, userInputX, userInputY)) {
 
-                Spielstein spielstein = aktuellesSpiel.aktiverSpieler.getSpielstein();
-
                 System.out.println("Hier liegt bereits ein Stein, wähle eine andere Position");
 
                 System.out.println("x-Koordinate?");
@@ -153,12 +151,7 @@ public class Tictactoe {
 
         Spielstein spielstein1 = koordinaten[x1][y1];
 
-        if (spielstein1 == null) {
-            return false;
-        }
-
-
-        return true;
+        return spielstein1 != null;
     }
 
 
